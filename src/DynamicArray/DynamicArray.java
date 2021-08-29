@@ -99,6 +99,13 @@ public class DynamicArray<T> {
         set(getSize() - 1,  value);
     }
 
+    public void insert(int index, T value) {
+        validateIndex(index);
+        resize(getSize() + 1);
+        if (getSize() - 1 - index >= 0) System.arraycopy(list, index, list, index + 1, getSize() - 1 - index);
+        set(index, value);
+    }
+
     // DEV METHODS
 
     public void printAll() {
