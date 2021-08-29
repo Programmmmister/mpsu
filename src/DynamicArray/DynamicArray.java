@@ -72,6 +72,26 @@ public class DynamicArray<T> {
         list[index] = value;
     }
 
+    public void resize(int newSize) {
+
+        // copies list elements into another list with different size
+
+        if (newSize < 1) {
+            throw new InvalidArraySizeException();
+        }
+
+        T[] newList = (T[]) new Object[newSize];
+
+        int UpperBound = newSize;
+        if (newSize > getSize()) {
+            UpperBound = getSize();
+        }
+
+        System.arraycopy(list, 0, newList, 0, UpperBound);
+
+        list = newList;
+    }
+
     // DEV METHODS
 
     public void printAll() {
