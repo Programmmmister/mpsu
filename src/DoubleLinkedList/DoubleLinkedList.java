@@ -52,7 +52,17 @@ public class DoubleLinkedList<T> {
         return iterator;
     }
 
+    public Node<T> getStart() {
+        // returns first node
 
+        return start;
+    }
+
+    public Node<T> getEnd() {
+        // returns last node
+
+        return end;
+    }
 
     // DEV METHODS
 
