@@ -255,6 +255,37 @@ public class DoubleLinkedList<T> {
         pop(node);
     }
 
+    public void insertAfter(Node<T> nodeBefore, Node<T> newNode) {
+        // connects nodeBefore node to given node
+        // and then connects given node to nodeBefore.getNext()
+
+        // checking if newNode has its own next connections
+        Node<T> iterator = newNode;
+        while (iterator.getNext() != null) {
+            iterator = iterator.getNext();
+        }
+
+        // if so, connect most next connection to nodeBefore.getNext()
+        iterator.setNext(nodeBefore.getNext());
+        nodeBefore.getNext().setPrev(iterator);
+
+        // checking if newNode has its own previous connections
+        // if so, connect first of the connections to the nodeBefore
+        iterator = newNode;
+        while (iterator.getPrev() != null) {
+            iterator = iterator.getPrev();
+        }
+
+        // connecting nodeBefore to most previous connection of newNode
+        iterator.setPrev(nodeBefore);
+        nodeBefore.setNext(iterator);
+    }
+
+    public void insertBefore(Node<T> nodeAfter, Node<T> newNode) {
+        insertAfter(nodeAfter.getPrev(), newNode);
+
+    }
+
     // DEV METHODS
 
     public void printAll() {
