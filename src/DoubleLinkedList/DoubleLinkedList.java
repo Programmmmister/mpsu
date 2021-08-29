@@ -80,6 +80,74 @@ public class DoubleLinkedList<T> {
         throw new ValueNotFoundException();
     }
 
+    public int findFirstIndex(T value) {
+        // returns index of the first occurrence of node with a specific value
+
+        Node<T> iterator = start;
+        int index = 0;
+
+        while (iterator != null) {
+
+            if (iterator.getData() != null && iterator.getData().equals(value)) {
+                return index;
+            }
+
+            index++;
+            iterator = iterator.getNext();
+        }
+
+        throw new ValueNotFoundException();
+    }
+
+    public Node<T> findLast(T value) {
+
+        // returns the last occurrence of node with a specific value
+
+        Node<T> iterator = start;
+        Node<T> last = null;
+
+
+        while (iterator != null) {
+
+            if (iterator.getData() != null && iterator.getData().equals(value)) {
+                last = iterator;
+            }
+
+            iterator = iterator.getNext();
+        }
+
+        if (last != null) {
+            return last;
+        }
+
+        throw new ValueNotFoundException();
+    }
+
+    public int findLastIndex(T value) {
+
+        // returns last index of occurrence of node with a specific value
+
+        Node<T> iterator = start;
+        int last = -1;
+        int index = 0;
+
+        while (iterator != null) {
+
+            if (iterator.getData() != null && iterator.getData().equals(value)) {
+                last = index;
+            }
+
+            index++;
+            iterator = iterator.getNext();
+        }
+
+        if (last != -1) {
+            return last;
+        }
+
+        throw new ValueNotFoundException();
+    }
+
     // DEV METHODS
 
     public void printAll() {
