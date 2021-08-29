@@ -19,4 +19,38 @@ public class Node<T> {
         this.data = data;
         this.next = next;
     }
+
+    // GET INFO
+
+    public T getData() {
+        return data;
+    }
+
+    public Node<T> getPrev() {
+
+        // returns previous node
+
+        return prev;
+    }
+
+    public Node<T> getNext() {
+
+        // returns next node
+
+        return next;
+    }
+
+    // EDIT NODE
+
+    public void setData(T data) {
+        this.data = data;
+    }
+
+    public void setPrev(Node<T> prev) {
+        this.prev = prev;
+    }
+
+    public void setNext(Node<T> next) {
+        this.next = next;
+    }
 }
