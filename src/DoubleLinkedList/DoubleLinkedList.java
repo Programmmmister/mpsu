@@ -224,6 +224,36 @@ public class DoubleLinkedList<T> {
         append(new Node<T>(value));
     }
 
+    public void pop(Node<T> node) {
+
+        // removes given node
+
+        // removing first node
+        if (node.getPrev() == null) {
+            start = node.getNext();
+            start.setPrev(null);
+            return;
+        }
+
+        // removing last node
+        if (node.getNext() == null) {
+            end = node.getPrev();
+            end.setNext(null);
+            return;
+        }
+
+        node.getPrev().setNext(node.getNext());
+        node.getNext().setPrev(node.getPrev());
+    }
+
+    public void popIndex(int index) {
+        validateIndex(index);
+
+        // removes the node at the given index from the list
+
+        Node<T> node = get(index);
+        pop(node);
+    }
 
     // DEV METHODS
 
