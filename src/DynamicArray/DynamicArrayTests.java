@@ -172,4 +172,53 @@ public class DynamicArrayTests {
         assertThrows(InvalidIndexException.class, () -> array.set(10, 777));
     }
 
+    // RESIZE TESTS
+
+    @Test
+    public void resize_smaller() {
+        DynamicArray<Integer> array = new DynamicArray<Integer>(10);
+
+        array.resize(9);
+
+        int expected = 9;
+        int actual = array.getSize();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void resize_bigger() {
+        DynamicArray<Integer> array = new DynamicArray<Integer>(10);
+
+        array.resize(11);
+
+        int expected = 11;
+        int actual = array.getSize();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void resize_valueValidation() {
+        DynamicArray<Integer> array = new DynamicArray<Integer>(10);
+
+        for (int i=0; i < array.getSize(); i++) {
+            array.set(i, i);
+        }
+
+        array.resize(11);
+        array.set(10, 10);
+
+        for (int i=0; i < array.getSize(); i++) {
+            assertEquals(i, array.get(i));
+        }
+    }
+
+    @Test
+    public void resize_InvalidArraySize_ThrowsException() {
+        DynamicArray<Integer> array = new DynamicArray<Integer>(10);
+
+        assertThrows(InvalidArraySizeException.class, () -> array.resize(-1));
+        assertThrows(InvalidArraySizeException.class, () -> array.resize(0));
+    }
+
+
 }
