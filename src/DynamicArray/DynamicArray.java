@@ -92,6 +92,13 @@ public class DynamicArray<T> {
         list = newList;
     }
 
+    public void append(T value) {
+        // adds new element to the end of the list
+
+        resize(getSize() + 1);
+        set(getSize() - 1,  value);
+    }
+
     // DEV METHODS
 
     public void printAll() {
