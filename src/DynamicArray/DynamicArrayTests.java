@@ -30,4 +30,15 @@ public class DynamicArrayTests {
         assertThrows(InvalidArraySizeException.class, () -> new DynamicArray<Integer>(-1));
         assertThrows(InvalidArraySizeException.class, () -> new DynamicArray<Integer>(0));
     }
+
+    // GETSIZE TESTS
+
+    @Test
+    public void getSize() {
+        DynamicArray<Integer> array = new DynamicArray<Integer>(5);
+
+        int expected = 5;
+        int actual = array.getSize();
+        assertEquals(expected, actual);
+    }
 }
