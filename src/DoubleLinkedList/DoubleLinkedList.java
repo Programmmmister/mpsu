@@ -193,6 +193,36 @@ public class DoubleLinkedList<T> {
         return false;
     }
 
+    // EDIT LIST
+
+    public void append(Node<T> newNode) {
+
+        // links new node to the last one
+
+        // checking if newNode has its own previous connections
+        // if so, connect first of the connections to the end
+        Node<T> iterator = newNode;
+        while (iterator.getPrev() != null) {
+            iterator = iterator.getPrev();
+        }
+
+        // connecting end to the first connection of newNode
+        iterator.setPrev(end);
+        end.setNext(iterator);
+
+        // checking if newNode has its own next connections
+        iterator = newNode;
+        while (iterator.getNext() != null) {
+            iterator = iterator.getNext();
+        }
+
+        // if so, declaring the last newNode connection the end
+        end = iterator;
+    }
+
+    public void appendValue(T value) {
+        append(new Node<T>(value));
+    }
 
 
     // DEV METHODS
