@@ -282,4 +282,44 @@ public class DynamicArrayTests {
         assertThrows(InvalidIndexException.class, () -> array.insert(10, 777));
     }
 
+    // REMOVE TESTS
+
+    @Test
+    public void remove_ValueValidation() {
+        DynamicArray<Integer> array = new DynamicArray<Integer>(10);
+
+        array.set(4, 5);
+        array.set(6, 5);
+        array.set(5, 777);
+        array.remove(5);
+
+        int expected = 5;
+        int actual = array.get(4);
+        assertEquals(expected, actual);
+        actual = array.get(5);
+        assertEquals(expected, actual);
+
+        assertThrows(ValueNotFoundException.class, () -> array.findFirst(777));
+    }
+
+    @Test
+    public void remove_ArraySizeValidation() {
+        DynamicArray<Integer> array = new DynamicArray<Integer>(10);
+
+        array.set(5, 5);
+        array.remove(5);
+
+        int expected = 9;
+        int actual = array.getSize();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void remove_InvalidIndex_ThrowsException() {
+        DynamicArray<Integer> array = new DynamicArray<Integer>(10);
+
+        assertThrows(InvalidIndexException.class, () -> array.remove(-1));
+        assertThrows(InvalidIndexException.class, () -> array.remove(10));
+    }
+
 }
