@@ -46,6 +46,25 @@ public class DynamicArray<T> {
         throw new ValueNotFoundException();
     }
 
+    public int findLast(T value) {
+
+        // returns last search result
+
+        int last_index = -1;
+
+        for (int i=0; i < getSize(); i++) {
+            if (get(i).equals(value)) {
+                last_index = i;
+            }
+        }
+
+        if (last_index >= 0) {
+            return last_index;
+        }
+
+        throw new ValueNotFoundException();
+    }
+
     // DEV METHODS
 
     public void printAll() {
