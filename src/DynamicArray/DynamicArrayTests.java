@@ -63,4 +63,113 @@ public class DynamicArrayTests {
         assertThrows(InvalidIndexException.class, () -> array.get(5));
     }
 
+    // FINDFIRST TESTS
+
+    @Test
+    public void findFirst() {
+        DynamicArray<Integer> array = new DynamicArray<Integer> (10);
+
+        for (int i=0; i < array.getSize(); i++) {
+            array.set(i, i);
+        }
+
+        array.set(3, 777);
+
+        int expected = 3;
+        int actual = array.findFirst(777);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void findFirst_multiple() {
+        DynamicArray<Integer> array = new DynamicArray<Integer> (10);
+
+        for (int i=0; i < array.getSize(); i++) {
+            array.set(i, i);
+        }
+
+        array.set(3, 777);
+        array.set(4, 777);
+
+        int expected = 3;
+        int actual = array.findFirst(777);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void findFirst_ValueNotFound_ThrowsException() {
+        DynamicArray<Integer> array = new DynamicArray<Integer>(10);
+
+        for (int i=0; i < array.getSize(); i++) {
+            array.set(i, i);
+        }
+
+        assertThrows(ValueNotFoundException.class, () -> array.findFirst(777));
+    }
+
+    // FINDLAST TESTS
+
+    @Test
+    public void findLast() {
+        DynamicArray<Integer> array = new DynamicArray<Integer> (10);
+
+        for (int i=0; i < array.getSize(); i++) {
+            array.set(i, i);
+        }
+
+        array.set(3, 777);
+
+        int expected = 3;
+        int actual = array.findLast(777);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void findLast_multiple() {
+        DynamicArray<Integer> array = new DynamicArray<Integer> (10);
+
+        for (int i=0; i < array.getSize(); i++) {
+            array.set(i, i);
+        }
+
+        array.set(3, 777);
+        array.set(4, 777);
+
+        int expected = 4;
+        int actual = array.findLast(777);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void findLast_ValueNotFound_ThrowsException() {
+        DynamicArray<Integer> array = new DynamicArray<Integer>(10);
+
+        for (int i=0; i < array.getSize(); i++) {
+            array.set(i, i);
+        }
+
+        assertThrows(ValueNotFoundException.class, () -> array.findLast(777));
+    }
+
+    // SET TESTS
+
+    @Test
+    public void set() {
+        DynamicArray<Integer> array = new DynamicArray<Integer>(10);
+
+        array.set(0, 777);
+
+        int expected = 777;
+        int actual = array.get(0);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void findLast_InvalidIndex_ThrowsException() {
+        DynamicArray<Integer> array = new DynamicArray<Integer>(10);
+
+        assertThrows(InvalidIndexException.class, () -> array.set(-1, 777));
+        assertThrows(InvalidIndexException.class, () -> array.set(10, 777));
+    }
+
 }
