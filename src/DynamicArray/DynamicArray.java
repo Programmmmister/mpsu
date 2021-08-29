@@ -33,6 +33,19 @@ public class DynamicArray<T> {
         return list[index];
     }
 
+    public int findFirst(T value) {
+
+        // returns first search result
+
+        for (int i=0; i < getSize(); i++) {
+            if (get(i) != null && get(i).equals(value)) {
+                return i;
+            }
+        }
+
+        throw new ValueNotFoundException();
+    }
+
     // DEV METHODS
 
     public void printAll() {
