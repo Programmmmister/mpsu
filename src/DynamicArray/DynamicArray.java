@@ -15,4 +15,40 @@ public class DynamicArray<T> {
 
         list = (T[]) new Object[size];
     }
+
+    // GET INFO
+
+    public int getSize() {
+
+        // returns number of elements in the list
+
+        return list.length;
+    }
+
+    public T get(int index) {
+        validateIndex(index);
+
+        // returns list element by index
+
+        return list[index];
+    }
+
+    // DEV METHODS
+
+    public void printAll() {
+        System.out.print("[");
+        for (int i = 0; i < getSize() - 1; i++) {
+            System.out.print(get(i) + ", ");
+        }
+        System.out.println(get(getSize() - 1) + "]");
+    }
+
+    private void validateIndex(int index) {
+
+        int listSize = getSize();
+
+        if (index < 0 || index >= listSize) {
+            throw new InvalidIndexException(index, listSize);
+        }
+    }
 }
