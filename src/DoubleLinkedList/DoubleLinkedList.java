@@ -148,6 +148,37 @@ public class DoubleLinkedList<T> {
         throw new ValueNotFoundException();
     }
 
+    public Boolean isEmpty() {
+        Node<T> iterator = start;
+
+        while (iterator != null) {
+
+            if (iterator.getData() != null) {
+                return false;
+            }
+
+            iterator = iterator.getNext();
+        }
+
+        return true;
+    }
+
+    public Boolean isFull() {
+        Node<T> iterator = start;
+
+        while (iterator != null) {
+
+            if (iterator.getData() == null) {
+                return false;
+            }
+
+            iterator = iterator.getNext();
+        }
+
+        return true;
+    }
+
+
     // DEV METHODS
 
     public void printAll() {
