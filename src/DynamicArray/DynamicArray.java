@@ -65,6 +65,13 @@ public class DynamicArray<T> {
         throw new ValueNotFoundException();
     }
 
+    // EDIT ARRAY
+
+    public void set(int index, T value) {
+        validateIndex(index);
+        list[index] = value;
+    }
+
     // DEV METHODS
 
     public void printAll() {
