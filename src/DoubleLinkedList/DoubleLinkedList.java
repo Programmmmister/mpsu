@@ -178,6 +178,22 @@ public class DoubleLinkedList<T> {
         return true;
     }
 
+    public boolean contains(T value) {
+        Node<T> iterator = start;
+
+        while (iterator != null) {
+
+            if (iterator.getData() != null && iterator.getData().equals(value)) {
+                return true;
+            }
+
+            iterator = iterator.getNext();
+        }
+
+        return false;
+    }
+
+
 
     // DEV METHODS
 
