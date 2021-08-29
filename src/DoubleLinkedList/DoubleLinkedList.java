@@ -64,6 +64,22 @@ public class DoubleLinkedList<T> {
         return end;
     }
 
+    public Node<T> findFirst(T value) {
+        // returns the first occurrence of node with a specific value
+
+        Node<T> iterator = start;
+        while (iterator != null) {
+
+            if (iterator.getData() != null && iterator.getData().equals(value)) {
+                return iterator;
+            }
+
+            iterator = iterator.getNext();
+        }
+
+        throw new ValueNotFoundException();
+    }
+
     // DEV METHODS
 
     public void printAll() {
