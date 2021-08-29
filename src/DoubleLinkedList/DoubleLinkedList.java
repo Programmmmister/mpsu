@@ -38,4 +38,43 @@ public class DoubleLinkedList<T> {
         return size;
     }
 
+    public Node<T> get(int index) {
+        validateIndex(index);
+
+        // returns node by its index
+
+        Node<T> iterator = start;
+
+        for (int i = 0; i < index; i++) {
+            iterator = iterator.getNext();
+        }
+
+        return iterator;
+    }
+
+
+
+    // DEV METHODS
+
+    public void printAll() {
+        Node<T> iterator = start;
+
+        System.out.print("(");
+        while (iterator.getNext() != null) {
+            System.out.print(iterator.getData() + ", ");
+            iterator = iterator.getNext();
+        }
+
+        System.out.println(iterator.getData() + ")");
+    }
+
+    private void validateIndex(int index) {
+
+        int listSize = getSize();
+
+        if (index < 0 || index >= listSize) {
+            throw new InvalidIndexException(index, listSize);
+        }
+    }
+
 }
