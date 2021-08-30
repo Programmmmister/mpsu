@@ -15,7 +15,7 @@ public class StackTests {
     public void init() {
         Stack<Integer> stack = new Stack<Integer>();
 
-        int expected = 1;
+        int expected = 2;
         int actual = stack.getSize();
         assertEquals(expected, actual);
     }
@@ -43,7 +43,7 @@ public class StackTests {
         stack.pushValue(1);
         stack.pushValue(1);
 
-        int expected = 3;
+        int expected = 5;
         int actual = stack.getSize();
         assertEquals(expected, actual);
     }
@@ -52,7 +52,7 @@ public class StackTests {
     public void getSize_empty() {
         Stack<Integer> stack = new Stack<Integer>();
 
-        int expected = 1;
+        int expected = 2;
         int actual = stack.getSize();
         assertEquals(expected, actual);
     }
@@ -128,7 +128,7 @@ public class StackTests {
         stack.pushValue(1);
         stack.pushValue(1);
 
-        boolean expected = true;
+        boolean expected = false;
         boolean actual = stack.isFull();
         assertEquals(expected, actual);
     }
@@ -176,7 +176,7 @@ public class StackTests {
 
     @Test
     public void pushValue_pushNull() {
-        Stack<Integer> stack = new Stack<>(228);
+        Stack<Integer> stack = new Stack<Integer>(null);
 
         stack.pushValue(null);
         Object actual = stack.peek().getData();
@@ -215,16 +215,16 @@ public class StackTests {
 
     @Test
     public void pop_PopLast() {
-        DoubleLinkedList<Integer> list = new DoubleLinkedList<>(228);
+        Stack<Integer> stack = new Stack<>(228);
 
-        list.appendValue(1);
-        list.appendValue(228);
-        list.appendValue(228);
+        stack.pushValue(1);
+        stack.pushValue(228);
+        stack.pushValue(228);
 
-        list.pop(list.get(3));
+        stack.pop();
 
         int expected = 3;
-        int actual = list.getSize();
+        int actual = stack.getSize();
         assertEquals(expected, actual);
     }
 

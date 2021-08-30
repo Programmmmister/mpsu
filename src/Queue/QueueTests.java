@@ -1,7 +1,10 @@
 package Queue;
 
+import DoubleLinkedList.DoubleLinkedList;
+import Stack.Stack;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 public class QueueTests {
 
@@ -57,10 +60,79 @@ public class QueueTests {
 
     @Test
     public void getSize_empty() {
-        Queue<Integer> stack = new Queue<Integer>();
+        Queue<Integer> queue = new Queue<Integer>();
 
         int expected = 0;
-        int actual = stack.getSize();
+        int actual = queue.getSize();
+        assertEquals(expected, actual);
+    }
+
+    // ENQUEUE TESTS
+
+    @Test
+    public void enqueue_SizeValidation() {
+        Queue<Integer> queue = new Queue<Integer>();
+
+        queue.enqueue(1);
+        queue.enqueue(228);
+        queue.enqueue(228);
+
+        int expected = 3;
+        int actual = queue.getSize();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void enqueue_ValueValidation() {
+        Queue<Integer> queue = new Queue<Integer>();
+
+        queue.enqueue(1);
+        queue.enqueue(228);
+        queue.enqueue(69);
+
+        int expected = 69;
+        int actual = queue.peek();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void enqueue_enqueueNull() {
+        Queue<Integer> queue = new Queue<Integer>();
+
+        queue.enqueue(null);
+        Object actual = queue.peek();
+        assertNull(actual);
+    }
+
+    // DEQUEUE TESTS
+
+    @Test
+    public void dequeue_ValueValidation() {
+        Queue<Integer> queue = new Queue<Integer>();
+
+        queue.enqueue(1);
+        queue.enqueue(228);
+        queue.enqueue(13);
+
+        queue.dequeue(13);
+
+        int expected = 228;
+        int actual = queue.peek();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void dequeue_SizeValidation() {
+        Queue<Integer> queue = new Queue<Integer>();
+
+        queue.enqueue(1);
+        queue.enqueue(228);
+        queue.enqueue(228);
+
+        queue.dequeue(228);
+
+        int expected = 2;
+        int actual = queue.getSize();
         assertEquals(expected, actual);
     }
 }

@@ -16,7 +16,7 @@ public class Queue<T> {
             return null;
         }
 
-        return queue.get(0);
+        return queue.get(getSize() - 1);
     }
 
     public int getSize() {

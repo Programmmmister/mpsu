@@ -1,15 +1,16 @@
 import Queue.Queue;
+import Stack.Stack;
 
 public class Main {
 
     public static void main(String[] args) {
-	    Queue<Integer> queue = new Queue<Integer>();
+        Stack<Integer> stack = new Stack<Integer>();
 
-        queue.enqueue(1);
-        queue.enqueue(1);
-        queue.enqueue(3);
+        stack.pushValue(1);
+        stack.pushValue(1);
+        stack.pushValue(1);
 
-        queue.printAll();
-        System.out.println(queue.peek());
+        stack.printAll();
+        System.out.println(stack.isFull());
     }
 }

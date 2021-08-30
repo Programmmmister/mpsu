@@ -6,8 +6,9 @@ public class DoubleLinkedList<T> {
 
     public DoubleLinkedList() {
         start = new Node<T>();
-        start.setPrev(start);
-        end = start;
+        end = new Node<T>();
+        start.setNext(end);
+        end.setPrev(start);
     }
 
     public DoubleLinkedList(T value) {
@@ -292,7 +293,15 @@ public class DoubleLinkedList<T> {
     }
 
     public void insertBefore(Node<T> nodeAfter, Node<T> newNode) {
-        insertAfter(nodeAfter.getPrev(), newNode);
+
+        if (nodeAfter.getPrev() == null) {
+            start.setPrev(newNode);
+            newNode.setNext(start);
+            start = newNode;
+            return;
+        } else {
+            insertAfter(nodeAfter.getPrev(), newNode);
+        }
 
     }
 

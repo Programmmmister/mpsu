@@ -20,7 +20,7 @@ public class Stack<T> {
     }
 
     public Node<T> peek() {
-        return list.getEnd();
+        return list.getStart();
     }
 
     public boolean isEmpty() {
@@ -34,15 +34,15 @@ public class Stack<T> {
     // EDIT STACK
 
     public void push(Node<T> node) {
-        list.append(node);
+        list.insertBefore(list.getStart(), node);
     }
 
     public void pushValue(T data) {
-        list.appendValue(data);
+        list.insertBefore(list.getStart(), new Node<T>(data));
     }
 
     public void pop() {
-        list.pop(list.getEnd());
+        list.pop(list.getStart());
     }
 
     // DEV METHODS
