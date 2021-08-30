@@ -12,6 +12,10 @@ public class Queue<T> {
     // GET INFO
 
     public T peek() {
+        if (queue.getSize() == 0) {
+            return null;
+        }
+
         return queue.get(0);
     }
 

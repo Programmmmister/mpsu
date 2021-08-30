@@ -1,14 +1,15 @@
-import DoubleLinkedList.*;
+import Queue.Queue;
 
 public class Main {
 
     public static void main(String[] args) {
-	    DoubleLinkedList<Integer> list = new DoubleLinkedList<Integer>();
+	    Queue<Integer> queue = new Queue<Integer>();
 
-	    list.appendValue(2);
-        list.appendValue(2);
-        list.appendValue(2);
+        queue.enqueue(1);
+        queue.enqueue(1);
+        queue.enqueue(3);
 
-	    list.printAll();
+        queue.printAll();
+        System.out.println(queue.peek());
     }
 }
