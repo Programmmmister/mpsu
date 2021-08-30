@@ -12,5 +12,9 @@ public class Stack<T> {
     public void push(T data) {
         list.appendValue(data);
     }
+
+    public void pop(T value) {
+        list.pop(list.findFirst(value));
+    }
 }
 
