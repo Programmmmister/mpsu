@@ -16,5 +16,9 @@ public class Stack<T> {
     public void pop(T value) {
         list.pop(list.findFirst(value));
     }
+
+    public Node<T> peek() {
+        return list.getEnd();
+    }
 }
 
