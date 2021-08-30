@@ -13,20 +13,14 @@ public class Stack<T> {
         list = new DoubleLinkedList<T>(value);
     }
 
-    public void push(T data) {
-        list.appendValue(data);
-    }
+    // GET INFO
 
-    public void pop(T value) {
-        list.pop(list.findFirst(value));
+    public int getSize() {
+        return list.getSize();
     }
 
     public Node<T> peek() {
         return list.getEnd();
-    }
-
-    public int getSize() {
-        return list.getSize();
     }
 
     public boolean isEmpty() {
@@ -36,6 +30,22 @@ public class Stack<T> {
     public boolean isFull() {
         return list.isFull();
     }
+
+    // EDIT STACK
+
+    public void push(Node<T> node) {
+        list.append(node);
+    }
+
+    public void pushValue(T data) {
+        list.appendValue(data);
+    }
+
+    public void pop(T value) {
+        list.pop(list.findFirst(value));
+    }
+
+    // DEV METHODS
 
     public void printAll() {
         list.printAll();
