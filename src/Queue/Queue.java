@@ -9,10 +9,6 @@ public class Queue<T> {
         queue = new DynamicArray<T>();
     }
 
-    public Queue(int size) {
-        queue = new DynamicArray<T>(size);
-    }
-
     // GET INFO
 
     public T peek() {

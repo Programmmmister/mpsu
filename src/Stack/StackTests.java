@@ -10,6 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 public class StackTests {
 
     // INIT TESTS
+
     @Test
     public void init() {
         Stack<Integer> stack = new Stack<Integer>();
