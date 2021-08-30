@@ -747,5 +747,26 @@ public class DoubleLinkedListTests {
         assertEquals(expected, actual);
     }
 
+    @Test
+    public void insertBefore_IntegrityValidation() {
+        DoubleLinkedList<Integer> list = new DoubleLinkedList<>(0);
 
+        list.appendValue(1);
+        list.appendValue(2);
+        list.appendValue(7);
+
+        Node<Integer> three = new Node<>(null, 3, null);
+        Node<Integer> four = new Node<Integer>(three, 4, null);
+        three.setNext(four);
+        Node<Integer> five = new Node<Integer>(four, 5, null);
+        four.setNext(five);
+        Node<Integer> six = new Node<Integer>(four, 6, null);
+        five.setNext(six);
+
+        list.insertBefore(list.findFirst(7), three);
+
+        for (int i = 0; i < 8; i++) {
+            assertEquals(i, list.get(i).getData());
+        }
+    }
 }
