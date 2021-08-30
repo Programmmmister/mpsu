@@ -9,6 +9,10 @@ public class Stack<T> {
         list = new DoubleLinkedList<T>();
     }
 
+    public Stack(T value) {
+        list = new DoubleLinkedList<T>(value);
+    }
+
     public void push(T data) {
         list.appendValue(data);
     }
