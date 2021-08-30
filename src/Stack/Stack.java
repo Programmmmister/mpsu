@@ -41,8 +41,8 @@ public class Stack<T> {
         list.appendValue(data);
     }
 
-    public void pop(T value) {
-        list.pop(list.findFirst(value));
+    public void pop() {
+        list.pop(list.getEnd());
     }
 
     // DEV METHODS
