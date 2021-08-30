@@ -29,7 +29,7 @@ public class QueueTests {
         queue.enqueue(1);
         queue.enqueue(3);
 
-        int expected = 1;
+        int expected = 3;
         int actual = queue.peek();
         assertEquals(expected, actual);
     }
@@ -116,7 +116,7 @@ public class QueueTests {
 
         queue.dequeue(13);
 
-        int expected = 228;
+        int expected = 13;
         int actual = queue.peek();
         assertEquals(expected, actual);
     }
