@@ -16,4 +16,8 @@ public class Queue<T> {
     public void enqueue(T value) {
         queue.append(value);
     }
+
+    public void dequeue(T value) {
+        queue.remove(0);
+    }
 }
