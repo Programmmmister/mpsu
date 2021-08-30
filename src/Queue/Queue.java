@@ -20,4 +20,8 @@ public class Queue<T> {
     public void dequeue(T value) {
         queue.remove(0);
     }
+
+    public T peek() {
+        queue.get(0);
+    }
 }
