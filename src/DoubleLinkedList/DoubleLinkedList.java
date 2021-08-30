@@ -196,8 +196,13 @@ public class DoubleLinkedList<T> {
     // EDIT LIST
 
     public void append(Node<T> newNode) {
-
         // links new node to the last one
+
+        // checking if list only has one node
+        boolean EMPTY_LIST = false;
+        if (isEmpty()) {
+            EMPTY_LIST = true;
+        }
 
         // checking if newNode has its own previous connections
         // if so, connect first of the connections to the end
@@ -207,8 +212,13 @@ public class DoubleLinkedList<T> {
         }
 
         // connecting end to the first connection of newNode
-        iterator.setPrev(end);
-        end.setNext(iterator);
+
+        if (EMPTY_LIST) {
+            start = iterator;
+        } else {
+            iterator.setPrev(end);
+            end.setNext(iterator);
+        }
 
         // checking if newNode has its own next connections
         iterator = newNode;

@@ -37,7 +37,7 @@ public class DoubleLinkedListTests {
         list.appendValue(1);
         list.appendValue(1);
 
-        int expected = 4;
+        int expected = 3;
         int actual = list.getSize();
         assertEquals(expected, actual);
     }
@@ -192,7 +192,7 @@ public class DoubleLinkedListTests {
         last.appendValue(3);
         last.appendValue(228);
 
-        expected = 4;
+        expected = 3;
         actual = last.findFirstIndex(228);
         assertEquals(expected, actual);
     }
@@ -304,7 +304,7 @@ public class DoubleLinkedListTests {
         last.appendValue(3);
         last.appendValue(228);
 
-        expected = 4;
+        expected = 3;
         actual = last.findLastIndex(228);
         assertEquals(expected, actual);
     }
@@ -384,7 +384,7 @@ public class DoubleLinkedListTests {
         list.appendValue(1);
         list.appendValue(1);
 
-        boolean expected = false;
+        boolean expected = true;
         boolean actual = list.isFull();
         assertEquals(expected, actual);
     }
