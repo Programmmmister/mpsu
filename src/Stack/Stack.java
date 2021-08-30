@@ -20,5 +20,9 @@ public class Stack<T> {
     public Node<T> peek() {
         return list.getEnd();
     }
+
+    public int getSize() {
+        return list.getSize();
+    }
 }
 
