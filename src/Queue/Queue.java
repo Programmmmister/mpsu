@@ -13,6 +13,18 @@ public class Queue<T> {
         queue = new DynamicArray<T>(size);
     }
 
+    // GET INFO
+
+    public T peek() {
+        return queue.get(0);
+    }
+
+    public int getSize() {
+        return queue.getSize();
+    }
+
+    // EDIT QUEUE
+
     public void enqueue(T value) {
         queue.append(value);
     }
@@ -21,7 +33,9 @@ public class Queue<T> {
         queue.remove(0);
     }
 
-    public T peek() {
-        queue.get(0);
+    // DEV METHODS
+
+    public void printAll() {
+        queue.printAll();
     }
 }
