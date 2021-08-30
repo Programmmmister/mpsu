@@ -24,5 +24,17 @@ public class Stack<T> {
     public int getSize() {
         return list.getSize();
     }
+
+    public boolean isEmpty() {
+        return list.isEmpty();
+    }
+
+    public boolean isFull() {
+        return list.isFull();
+    }
+
+    public void printAll() {
+        list.printAll();
+    }
 }
 
