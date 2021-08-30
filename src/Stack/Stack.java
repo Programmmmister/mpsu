@@ -3,7 +3,7 @@ import DoubleLinkedList.DoubleLinkedList;
 import DoubleLinkedList.Node;
 
 public class Stack<T> {
-    DoubleLinkedList<T> list;
+    protected DoubleLinkedList<T> list;
 
     public Stack() {
         list = new DoubleLinkedList<T>();
