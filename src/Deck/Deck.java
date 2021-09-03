@@ -11,4 +11,12 @@ public class Deck<T> {
     public void pushFront(T value) {
         list.appendValue(value);
     }
+
+    public void popFront() {
+        if (list.getSize() - 1 < 0) {
+            throw new EmptyDeckException();
+        }
+
+        list.popIndex(0);
+    }
 }
