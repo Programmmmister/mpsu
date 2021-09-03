@@ -9,7 +9,7 @@ public class DeckTests {
     public void init_sizeTest() {
         Deck<Integer> deck = new Deck<Integer>();
 
-        int expected = 0;
+        int expected = 2;
         int actual = deck.getSize();
         assertEquals(expected, actual);
     }
@@ -26,7 +26,7 @@ public class DeckTests {
         deck.pushFront(1);
         deck.pushFront(1);
 
-        int expected = 5;
+        int expected = 7;
         int actual = deck.getSize();
         assertEquals(expected, actual);
     }
@@ -76,7 +76,7 @@ public class DeckTests {
         deck.popFront();
         deck.popFront();
 
-        int expected = 0;
+        int expected = 1;
         int actual = deck.getSize();
         assertEquals(expected, actual);
     }
@@ -169,7 +169,7 @@ public class DeckTests {
         deck.popBack();
         deck.popBack();
 
-        int expected = 0;
+        int expected = 1;
         int actual = deck.getSize();
         assertEquals(expected, actual);
     }

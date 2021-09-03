@@ -241,14 +241,23 @@ public class DoubleLinkedList<T> {
 
         // removing first node
         if (node.getPrev() == null) {
-            start = node.getNext();
+
+            if (node.getNext() != null) {
+                start = node.getNext();
+            } else {
+                start = new Node<T>();
+            }
             start.setPrev(null);
             return;
         }
 
         // removing last node
         if (node.getNext() == null) {
-            end = node.getPrev();
+            if (node.getPrev() != null) {
+                end = node.getPrev();
+            } else {
+                end = new Node<T>();
+            }
             end.setNext(null);
             return;
         }
