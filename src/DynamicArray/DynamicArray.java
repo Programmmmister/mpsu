@@ -93,7 +93,7 @@ public class DynamicArray<T> {
     }
 
     public void append(T value) {
-        // adds new element to the end of the list
+        // inserts new element to the end of the list
 
         resize(getSize() + 1);
         set(getSize() - 1,  value);
