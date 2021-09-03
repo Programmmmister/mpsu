@@ -266,6 +266,10 @@ public class DoubleLinkedList<T> {
         pop(node);
     }
 
+    public void insertToStart(Node<T> newNode) {
+        insertBefore(start, newNode);
+    }
+
     public void insertAfter(Node<T> nodeBefore, Node<T> newNode) {
         // connects nodeBefore node to given node
         // and then connects given node to nodeBefore.getNext()
