@@ -57,4 +57,15 @@ public class QuadraticSortTests {
 
         assertArrayEquals(expected, actual);
     }
+
+    @Test
+    public void alreadySorted_doNothing()
+    {
+        int[] actual = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 };
+        int[] expected = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 };
+        QuadraticSort sort = new QuadraticSort();
+        sort.sort(actual);
+
+        assertArrayEquals(expected, actual);
+    }
 }
