@@ -20,6 +20,15 @@ public class Deck<T> {
         throw new EmptyDeckException();
     }
 
+    public T peekBack() {
+
+        if (list.getEnd() != null) {
+            return list.getEnd().getData();
+        }
+
+        throw new EmptyDeckException();
+    }
+
     // EDIT ARRAY
 
     public void pushFront(T value) {
