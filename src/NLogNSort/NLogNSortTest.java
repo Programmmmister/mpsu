@@ -47,4 +47,15 @@ public class NLogNSortTest {
 
         assertArrayEquals(expected, actual);
     }
+
+    @Test
+    public void containsSomeEquals_correctSorting()
+    {
+        int[] actual = { 10, 1, 5, 5, 11, 2, 5, 6, 8, 1, 4, 2, 10, 9, 3, 7, 10, 1, 2 };
+        int[] expected = { 1, 1, 1, 2, 2, 2, 3, 4, 5, 5, 5, 6, 7, 8, 9, 10, 10, 10, 11 };
+        NLogNSort sort = new NLogNSort();
+        sort.sort(actual);
+
+        assertArrayEquals(expected, actual);
+    }
 }
