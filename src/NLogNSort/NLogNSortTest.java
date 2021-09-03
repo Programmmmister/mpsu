@@ -58,4 +58,15 @@ public class NLogNSortTest {
 
         assertArrayEquals(expected, actual);
     }
+
+    @Test
+    public void alreadySorted_doNothing()
+    {
+        int[] actual = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 };
+        int[] expected = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 };
+        NLogNSort sort = new NLogNSort();
+        sort.sort(actual);
+
+        assertArrayEquals(expected, actual);
+    }
 }
