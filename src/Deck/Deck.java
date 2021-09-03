@@ -37,4 +37,12 @@ public class Deck<T> {
     public void pushBack(T value) {
         list.append(new Node<T>(value));
     }
+
+    public void popBack() {
+        if (list.getSize() - 1 < 0) {
+            throw new EmptyDeckException();
+        }
+
+        list.popIndex(list.getSize() -1);
+    }
 }
