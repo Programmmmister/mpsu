@@ -36,4 +36,15 @@ public class NLogNSortTest {
 
         assertArrayEquals(expected, actual);
     }
+
+    @Test
+    public void allElementsDifferent_correctSorting()
+    {
+        int[] actual = { 10, 1, 5, 11, 2, 6, 8, 4, 9, 3, 7 };
+        int[] expected = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 };
+        NLogNSort sort = new NLogNSort();
+        sort.sort(actual);
+
+        assertArrayEquals(expected, actual);
+    }
 }
