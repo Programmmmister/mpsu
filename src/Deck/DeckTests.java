@@ -139,4 +139,84 @@ public class DeckTests {
         assertEquals(expected, actual);
     }
 
+    // popBack tests
+
+    @Test
+    public void popBack_sizeTest() {
+        Deck<Integer> deck = new Deck<Integer>();
+
+        deck.pushBack(1);
+        deck.pushBack(2);
+        deck.pushBack(3);
+
+        deck.popBack();
+
+        int expected = 2;
+        int actual = deck.getSize();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void popBack_sizeTest_negativeSize() {
+        Deck<Integer> deck = new Deck<Integer>();
+
+        deck.pushBack(1);
+        deck.pushBack(2);
+        deck.pushBack(3);
+
+        deck.popBack();
+        deck.popBack();
+        deck.popBack();
+        deck.popBack();
+
+        int expected = 0;
+        int actual = deck.getSize();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void popBack_dataTest() {
+        Deck<Integer> deck = new Deck<Integer>();
+
+        deck.pushBack(1);
+        deck.pushBack(2);
+        deck.pushBack(3);
+
+        deck.popBack();
+
+        int expected = 2;
+        int actual = deck.peekBack();
+        assertEquals(expected, actual);
+    }
+
+    // peekBack tests
+
+    @Test
+    public void peeekBack_normalTest() {
+        Deck<Integer> deck = new Deck<Integer>();
+
+        deck.pushBack(1);
+        deck.pushBack(2);
+        deck.pushBack(3);
+
+        int expected = 3;
+        int actual = deck.peekBack();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void peekBack_emptyDeck_throwsException() {
+        Deck<Integer> deck = new Deck<Integer>();
+
+        deck.pushBack(1);
+        deck.pushBack(2);
+        deck.pushBack(3);
+
+        deck.popFront();
+        deck.popFront();
+        deck.popFront();
+
+        deck.peekBack();
+    }
+
 }
