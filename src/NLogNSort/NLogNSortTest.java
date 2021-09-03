@@ -14,4 +14,15 @@ public class NLogNSortTest {
 
         assertArrayEquals(expected, actual);
     }
+
+    @Test
+    public void oneElementArray_doNothing()
+    {
+        int[] actual = { 10 };
+        int[] expected = { 10 };
+        NLogNSort sort = new NLogNSort();
+        sort.sort(actual);
+
+        assertArrayEquals(expected, actual);
+    }
 }
