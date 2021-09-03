@@ -8,6 +8,19 @@ public class Deck<T> {
         list = new DoubleLinkedList<T>();
     }
 
+    // GET INFO
+
+    public T peekFront() {
+
+        if (list.getStart() != null) {
+            return list.getStart().getData();
+        }
+
+        throw new EmptyDeckException();
+    }
+
+    // EDIT ARRAY
+
     public void pushFront(T value) {
         list.appendValue(value);
     }
