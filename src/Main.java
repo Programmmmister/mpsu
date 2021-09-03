@@ -1,16 +1,12 @@
-import Queue.Queue;
-import Stack.Stack;
+import DoubleLinkedList.*;
 
 public class Main {
 
     public static void main(String[] args) {
-        Stack<Integer> stack = new Stack<Integer>();
+        DoubleLinkedList<Integer> linky = new DoubleLinkedList<Integer>(1);
 
-        stack.pushValue(1);
-        stack.pushValue(1);
-        stack.pushValue(1);
+        linky.insertToStart(new Node<Integer>(3));
 
-        stack.printAll();
-        System.out.println(stack.isFull());
+        linky.printAll();
     }
 }

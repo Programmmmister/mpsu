@@ -1,5 +1,6 @@
 package Deck;
 import DoubleLinkedList.DoubleLinkedList;
+import DoubleLinkedList.Node;
 
 public class Deck<T> {
     DoubleLinkedList<T> list;
@@ -22,7 +23,7 @@ public class Deck<T> {
     // EDIT ARRAY
 
     public void pushFront(T value) {
-        list.appendValue(value);
+        list.insertToStart(new Node<T>(value));
     }
 
     public void popFront() {
@@ -31,5 +32,9 @@ public class Deck<T> {
         }
 
         list.popIndex(0);
+    }
+
+    public void pushBack(T value) {
+        list.append(new Node<T>(value));
     }
 }
