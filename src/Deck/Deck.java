@@ -29,6 +29,10 @@ public class Deck<T> {
         throw new EmptyDeckException();
     }
 
+    public int getSize() {
+        return list.getSize();
+    }
+
     // EDIT ARRAY
 
     public void pushFront(T value) {
@@ -53,5 +57,11 @@ public class Deck<T> {
         }
 
         list.popIndex(list.getSize() -1);
+    }
+
+    // DEV METHODS
+
+    public void printAll() {
+        list.printAll();
     }
 }
