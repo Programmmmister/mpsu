@@ -260,11 +260,12 @@ public class BinarySearchTreeTests {
         tree.insert("abcdefghijklmnop");
         tree.insert("abcdefghijklmnopqr");
 
-        tree.delete("hrth");
+        tree.delete(tree.search("hrth"));
 
         String expected = "ab";
         String actual = tree.getSuccessor(tree.search("a")).getKey();
         assertEquals(expected, actual);
     }
+
 
 }
