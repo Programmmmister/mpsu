@@ -112,6 +112,7 @@ public class BinarySearchTree {
                     focusNode = focusNodeParent;
                 }
             }
+
             return null;
         }
     }
