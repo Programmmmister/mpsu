@@ -33,4 +33,12 @@ public class Node {
             return true;
         } else return key.equals("");
     }
+
+    public Node getLeft() {
+        return leftNode;
+    }
+
+    public Node getRight() {
+        return rightNode;
+    }
 }
