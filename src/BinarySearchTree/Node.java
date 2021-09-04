@@ -42,7 +42,29 @@ public class Node {
         return rightNode;
     }
 
-    public Node getParentNode() {
-        return parentNode;
+    public int getHeight() {
+        if (leftNode == null & rightNode == null) {
+            // node has no children
+
+            return 0;
+        }
+
+        if (leftNode != null & rightNode == null) {
+            // node has left child
+
+            return leftNode.getHeight() + 1;
+        }
+
+        if (leftNode == null & rightNode != null) {
+            // node has right child
+
+            return rightNode.getHeight() + 1;
+        }
+
+        if (leftNode != null & rightNode != null) {
+            return Math.max(leftNode.getHeight(), rightNode.getHeight()) + 1;
+        }
+
+        return -2;
     }
 }
