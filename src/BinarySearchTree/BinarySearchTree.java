@@ -127,7 +127,51 @@ public class BinarySearchTree {
         return count;
     }
 
+    private static boolean nodeExists(Node focusNode, String whatNode) {
+        boolean doesExist;
 
+        switch (whatNode) {
+            case "right" -> {
+                try {
+                    // if rightNode exists, returns true
+                    doesExist = focusNode.rightNode != null;
+                } catch (Exception NullPointerException) {
+                    doesExist = false;
+                }
+                return doesExist;
+            }
+
+            case "left" -> {
+                try {
+                    // if leftNode exists, returns true
+                    doesExist = focusNode.leftNode != null;
+                } catch (Exception NullPointerException) {
+                    doesExist = false;
+                }
+                return doesExist;
+            }
+
+            case "parent" -> {
+                try {
+                    // if parentNode exists, returns true
+                    doesExist = focusNode.parentNode != null;
+                } catch (Exception NullPointerException) {
+                    doesExist = false;
+                }
+                return doesExist;
+            }
+            default -> throw new RuntimeException("wrong node name");
+        }
+    }
+
+    private Node getHighest() {
+        Node firstNode = getMin();
+        while (firstNode.parentNode != null) {
+            firstNode = firstNode.parentNode;
+        }
+
+        return firstNode;
+    }
 
     // EDIT
 
@@ -218,41 +262,63 @@ public class BinarySearchTree {
         }
     }
 
-    private static boolean nodeExists(Node focusNode, String whatNode) {
-        boolean doesExist;
-
-        switch (whatNode) {
-            case "right" -> {
-                try {
-                    // if rightNode exists, returns true
-                    doesExist = focusNode.rightNode != null;
-                } catch (Exception NullPointerException) {
-                    doesExist = false;
-                }
-                return doesExist;
-            }
-
-            case "left" -> {
-                try {
-                    // if leftNode exists, returns true
-                    doesExist = focusNode.leftNode != null;
-                } catch (Exception NullPointerException) {
-                    doesExist = false;
-                }
-                return doesExist;
-            }
-
-            case "parent" -> {
-                try {
-                    // if parentNode exists, returns true
-                    doesExist = focusNode.parentNode != null;
-                } catch (Exception NullPointerException) {
-                    doesExist = false;
-                }
-                return doesExist;
-            }
-            default -> throw new RuntimeException("wrong node name");
+    private Node rotateRight(Node focusNode) {
+        Node parentNode = focusNode.parentNode;
+        Node leftChild = focusNode.leftNode;
+        focusNode.leftNode = leftChild.rightNode;
+        if (leftChild.rightNode != null) {
+            leftChild.rightNode.parentNode = leftChild;
         }
+
+        leftChild.rightNode = focusNode;
+        focusNode.parentNode = leftChild;
+        leftChild.parentNode = parentNode;
+
+        if (parentNode != null) {
+            if (parentNode.leftNode == focusNode) {
+                parentNode.leftNode = leftChild;
+            } else {
+                parentNode.rightNode = leftChild;
+            }
+        }
+
+        root = getHighest();
+        return leftChild;
+    }
+
+    private Node rotateLeft(Node focusNode) {
+        Node parentNode = focusNode.parentNode;
+        Node rightChild = focusNode.rightNode;
+        focusNode.rightNode = rightChild.leftNode;
+
+        if (rightChild.rightNode != null) {
+            rightChild.rightNode.parentNode = rightChild;
+        }
+
+        rightChild.leftNode = focusNode;
+        focusNode.parentNode = rightChild;
+        rightChild.parentNode = parentNode;
+
+        if (parentNode != null) {
+            if (parentNode.leftNode == focusNode) {
+                parentNode.leftNode = rightChild;
+            } else {
+                parentNode.rightNode = rightChild;
+            }
+        }
+
+        root = getHighest();
+        return rightChild;
+    }
+
+    private void rotateLeftRight(Node focusNode) {
+        focusNode.leftNode = rotateLeft(focusNode.leftNode);
+        focusNode = rotateRight(focusNode);
+    }
+
+    private void rotateRightLeft(Node focusNode) {
+        focusNode.rightNode = rotateRight(focusNode.rightNode);
+        focusNode = rotateLeft(focusNode);
     }
 
     // DEV METHODS
