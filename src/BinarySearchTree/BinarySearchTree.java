@@ -176,53 +176,95 @@ public class BinarySearchTree {
 
     // EDIT
 
-    public void delete(String key) {
-        Node focusNode = search(key);
-        if (focusNode == null) {
-            return;
+    public void delete(Node focusNode) {
+        Node newHeadNode = deleteRec(focusNode);
+
+        if (newHeadNode != null) {
+            balance(newHeadNode);
         }
+    }
+
+
+    private Node deleteRec(Node focusNode) {
+        // returns new head node of a tree
+
+        if (focusNode == null) {
+            return null;
+        }
+
         Node focusNodeParent = focusNode.parentNode;
         boolean isLeftChild = false;
         if (nodeExists(focusNodeParent, "left")) {
-            isLeftChild = key.equals(focusNodeParent.leftNode.key);
+            isLeftChild = focusNode == focusNodeParent.leftNode;
         }
 
         if (countChildren(focusNode) == 2) {
-            //
+
+            Node focusNodeSuccessor = getSuccessor(focusNode);
+            focusNodeSuccessor.leftNode = focusNode.leftNode;
+
+            if (isLeftChild) {
+                focusNodeParent.leftNode = focusNodeSuccessor;
+                focusNodeSuccessor.leftNode.parentNode = focusNodeSuccessor;
+            } else {
+                focusNodeParent.rightNode = focusNodeSuccessor;
+                focusNodeSuccessor.rightNode.parentNode = focusNodeSuccessor;
+            }
+
+            focusNodeSuccessor.parentNode = focusNodeParent;
+            return focusNodeSuccessor;
+
         }
 
-        if (countChildren(focusNode) == 1) {
+        else if (countChildren(focusNode) == 1) {
+
             if (nodeExists(focusNode, "left")) {
                 // if the node only has left child
+
                 Node newChild = focusNode.leftNode; // copy new child
                 focusNode.leftNode.parentNode = null; // delete focusNode from memory
                 if (isLeftChild) {
                     focusNodeParent.leftNode = newChild; // link parent to child
+
+                    newChild.parentNode = focusNodeParent; // link child to parent
+                    return focusNodeParent.leftNode;
                 } else {
                     focusNodeParent.rightNode = newChild;
+
+                    newChild.parentNode = focusNodeParent; // link child to parent
+                    return focusNodeParent.rightNode;
                 }
-                newChild.parentNode = focusNodeParent; // link child to parent
 
             } else {
                 // if the node only has right child
+
                 Node newChild = focusNode.rightNode;
                 focusNode.rightNode.parentNode = null;
                 if (isLeftChild) {
                     focusNodeParent.leftNode = newChild;
+
+                    newChild.parentNode = focusNodeParent;
+                    return focusNodeParent.leftNode;
                 } else {
                     focusNodeParent.rightNode = newChild;
+
+                    newChild.parentNode = focusNodeParent;
+                    return focusNodeParent.rightNode;
                 }
-                newChild.parentNode = focusNodeParent;
             }
         }
 
         else if (countChildren(focusNode) == 0) {
             if (isLeftChild) {
                 focusNodeParent.leftNode = null;
+                return focusNodeParent;
             } else {
                 focusNodeParent.rightNode = null;
+                return focusNodeParent;
             }
         }
+
+        return null;
     }
 
     public void insert(String key) {
