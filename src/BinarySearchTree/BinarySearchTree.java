@@ -162,7 +162,7 @@ public class BinarySearchTree {
                 }
                 return doesExist;
             }
-            default -> throw new RuntimeException("wrong node name");
+            default -> throw new InvalidNameException();
         }
     }
 
