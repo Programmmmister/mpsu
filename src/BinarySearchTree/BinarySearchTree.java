@@ -115,6 +115,67 @@ public class BinarySearchTree {
         }
     }
 
+    public void delete(String key) {
+        Node focusNode = search(key);
+        if (focusNode == null) {
+            return;
+        }
+        Node focusNodeParent = focusNode.parentNode;
+        boolean isLeftChild = false;
+        if (nodeExists(focusNodeParent, "left")) {
+            isLeftChild = key.equals(focusNodeParent.leftNode.key);
+        }
+
+        if (countChildren(focusNode) == 2) {
+            //
+        }
+
+        if (countChildren(focusNode) == 1) {
+            if (nodeExists(focusNode, "left")) {
+                // if the node only has left child
+                Node newChild = focusNode.leftNode; // copy new child
+                focusNode.leftNode.parentNode = null; // delete focusNode from memory
+                if (isLeftChild) {
+                    focusNodeParent.leftNode = newChild; // link parent to child
+                } else {
+                    focusNodeParent.rightNode = newChild;
+                }
+                newChild.parentNode = focusNodeParent; // link child to parent
+
+            } else {
+                // if the node only has right child
+                Node newChild = focusNode.rightNode;
+                focusNode.rightNode.parentNode = null;
+                if (isLeftChild) {
+                    focusNodeParent.leftNode = newChild;
+                } else {
+                    focusNodeParent.rightNode = newChild;
+                }
+                newChild.parentNode = focusNodeParent;
+            }
+        }
+
+        else if (countChildren(focusNode) == 0) {
+            if (isLeftChild) {
+                focusNodeParent.leftNode = null;
+            } else {
+                focusNodeParent.rightNode = null;
+            }
+        }
+    }
+
+    private static int countChildren(Node focusNode) {
+        int count = 0;
+        if (nodeExists(focusNode, "left")) {
+            count++;
+        }
+
+        if (nodeExists(focusNode, "right")) {
+            count++;
+        }
+        return count;
+    }
+
 
 
     // EDIT
