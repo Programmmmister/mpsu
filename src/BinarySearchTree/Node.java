@@ -2,9 +2,9 @@ package BinarySearchTree;
 
 public class Node {
     String key;
-    Node parentNode;
-    Node rightNode;
-    Node leftNode;
+    protected Node parentNode;
+    protected Node rightNode;
+    protected Node leftNode;
 
     public Node() {
         key = null;
