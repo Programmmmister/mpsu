@@ -67,4 +67,30 @@ public class Node {
 
         return -2;
     }
+
+    public int getBalance() {
+        // 1 - left heavy
+        // 0 - even
+        // -1 - right heavy
+
+        int leftHeight;
+        int rightHeight;
+
+        if (leftNode != null) {
+            // to prevent NullPointerException
+
+            leftHeight = leftNode.getHeight();
+        } else {
+            leftHeight = -1;
+        }
+
+        if (rightNode != null) {
+            rightHeight = rightNode.getHeight();
+        } else {
+            rightHeight = -1;
+        }
+
+
+        return leftHeight - rightHeight;
+    }
 }
