@@ -27,4 +27,10 @@ public class Node {
     public Node getParentNode() {
         return parentNode;
     }
+
+    public boolean isEmpty() {
+        if (key == null) {
+            return true;
+        } else return key.equals("");
+    }
 }
