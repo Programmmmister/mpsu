@@ -1,4 +1,5 @@
 package BinarySearchTree;
+import java.util.Objects;
 
 public class BinarySearchTree {
     Node root;
@@ -229,10 +230,10 @@ public class BinarySearchTree {
             root = new Node(key);
             return;
         }
-        insertRec(key, root);
+        balance(Objects.requireNonNull(insertRec(key, root)).parentNode);
     }
 
-    private static void insertRec(String key, Node focusNode) {
+    private static Node insertRec(String key, Node focusNode) {
         if (key.compareTo(focusNode.key) > 0) {
             // if the node is to be placed on the right
             // (if new key is greater than the focusNode key)
@@ -240,26 +241,28 @@ public class BinarySearchTree {
             if (focusNode.rightNode == null) {
                 focusNode.rightNode = new Node(key);
                 focusNode.rightNode.parentNode = focusNode;
-                return;
+                return focusNode.rightNode;
             } else {
                 // if the right child does exist
-                insertRec(key, focusNode.rightNode);
+                return insertRec(key, focusNode.rightNode);
             }
         }
 
-        if (key.compareTo(focusNode.key) <= 0) {
+        else if (key.compareTo(focusNode.key) <= 0) {
             // if the node is to be placed on the left
             // (if new key is lesser than the focusNode key)
 
             if (focusNode.leftNode == null) {
                 focusNode.leftNode = new Node(key);
                 focusNode.leftNode.parentNode = focusNode;
+                return focusNode.leftNode;
             } else {
-
                 // if the left child does exist
-                insertRec(key, focusNode.leftNode);
+                return insertRec(key, focusNode.leftNode);
             }
         }
+
+        return null;
     }
 
     private Node rotateRight(Node focusNode) {
