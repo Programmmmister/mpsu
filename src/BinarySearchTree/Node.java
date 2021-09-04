@@ -41,4 +41,8 @@ public class Node {
     public Node getRight() {
         return rightNode;
     }
+
+    public Node getParentNode() {
+        return parentNode;
+    }
 }
