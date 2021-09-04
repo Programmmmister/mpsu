@@ -158,7 +158,7 @@ public class BinarySearchTreeTests {
     }
 
     @Test
-    public void insertionTest_positive() {
+    public void insertionTest() {
         BinarySearchTree tree = new BinarySearchTree("abcdefgh");
         tree.insert("abc");
         tree.insert("abcd");
@@ -172,7 +172,7 @@ public class BinarySearchTreeTests {
         tree.insert("abcdefghijklmnop");
         tree.insert("abcdefghijklmnopqr");
 
-        tree.delete("abcdefghijklmnopqrst");
+        tree.delete(tree.search("abcdefghijklmnopqrst"));
 
         String expected = null;
         Object actual = tree.getSuccessor(tree.search("abcdefghijklmnopqr"));
