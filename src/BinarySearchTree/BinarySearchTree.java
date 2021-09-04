@@ -11,6 +11,35 @@ public class BinarySearchTree {
         root = new Node(key);
     }
 
+    // GET IMFO
+
+    public Node search(String key) {
+        return searchRec(key, root);
+    }
+
+    private static Node searchRec(String key, Node focusNode) {
+        if (focusNode == null) {
+            // if last node and not found
+            return null;
+        }
+
+        if (key.equals(focusNode.key)) {
+            // if node is found
+            return focusNode;
+        }
+
+        // if node is not found
+
+        if (key.compareTo(focusNode.key) > 0) {
+            return searchRec(key, focusNode.rightNode);
+        }
+
+        else if (key.compareTo(focusNode.key) < 0) {
+            return searchRec(key, focusNode.leftNode);
+        }
+        return null;
+    }
+
     // EDIT
 
     public void insert(String key) {
