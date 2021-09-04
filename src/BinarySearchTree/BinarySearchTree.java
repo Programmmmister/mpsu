@@ -58,6 +58,36 @@ public class BinarySearchTree {
         return focusNode;
     }
 
+    public Node getPredecessor(Node focusNode) {
+        return getPredecessorRec(focusNode);
+    }
+
+    private static Node getPredecessorRec(Node focusNode) {
+        if (nodeExists(focusNode, "left")) {
+            focusNode = focusNode.leftNode;
+            while (nodeExists(focusNode, "right")) {
+                focusNode = focusNode.rightNode;
+            }
+            return focusNode;
+        } else {
+            // if left node doesn't exist
+
+            while (nodeExists(focusNode, "parent")) {
+                Node focusNodeParent = focusNode.parentNode;
+                if (focusNodeParent.rightNode == focusNode) {
+                    // if parent element has a right child
+                    // and this left child is the focus node
+
+                    return focusNodeParent;
+                } else {
+                    // if right node isn't the focus node
+                    focusNode = focusNodeParent;
+                }
+            }
+            return null;
+        }
+    }
+
 
     // EDIT
 
