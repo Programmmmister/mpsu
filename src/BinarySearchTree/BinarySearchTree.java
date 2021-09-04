@@ -321,6 +321,41 @@ public class BinarySearchTree {
         focusNode = rotateLeft(focusNode);
     }
 
+    public void balance(Node focusNode) {
+        while (focusNode != null) {
+
+            if (focusNode.getBalance() > 1) {
+                // if left-heavy
+
+                if (focusNode.leftNode.getBalance() > 0) {
+                    // left-left case
+
+                    focusNode = rotateRight(focusNode);
+                } else {
+                    // left-right case
+
+                    rotateLeftRight(focusNode);
+                }
+            }
+
+            else if (focusNode.getBalance() < -1) {
+                // if right-heavy
+
+                if (focusNode.rightNode.getBalance() < 0) {
+                    // right-right case
+
+                    focusNode = rotateRight(focusNode);
+                } else {
+                    // right-left case
+
+                    rotateRightLeft(focusNode);
+                }
+            }
+
+            focusNode = focusNode.parentNode;
+        }
+    }
+
     // DEV METHODS
 
     public void printAll(boolean reversed) {
