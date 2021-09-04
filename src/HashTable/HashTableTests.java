@@ -50,4 +50,30 @@ public class HashTableTests {
             table.input(Integer.toString(rand.nextInt(255)));
         }
     }
+
+    @Test
+    public void get_normal() {
+        HashTable table = new HashTable();
+        table.input("a");
+        table.input("b");
+        table.input("c");
+
+        String expected = "c";
+        String actual = table.get(99).get(0).getData().data;
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void remove_normal() {
+        HashTable table = new HashTable();
+        table.input("a");
+        table.input("b");
+        table.input("c");
+
+        table.remove(99);
+
+        boolean expected = true;
+        boolean actual = table.get(0).isEmpty();
+        assertEquals(expected, actual);
+    }
 }
