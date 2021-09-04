@@ -180,12 +180,17 @@ public class BinarySearchTree {
     public void delete(Node focusNode) {
         Node newHeadNode = deleteRec(focusNode);
 
+//        System.out.println("newhead: " + newHeadNode.getKey());
+//        System.out.println("left node: " + newHeadNode.leftNode.getKey());
+//        System.out.println("left node parent: " + newHeadNode.leftNode.parentNode.getKey());
+//        System.out.println("right node: " + newHeadNode.rightNode);
+
         if (newHeadNode != null) {
             balance(newHeadNode);
         }
     }
 
-
+    // user
     private Node deleteRec(Node focusNode) {
         // returns new head node of a tree
 
