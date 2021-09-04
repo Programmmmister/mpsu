@@ -115,6 +115,22 @@ public class BinarySearchTree {
         }
     }
 
+    private static int countChildren(Node focusNode) {
+        int count = 0;
+        if (nodeExists(focusNode, "left")) {
+            count++;
+        }
+
+        if (nodeExists(focusNode, "right")) {
+            count++;
+        }
+        return count;
+    }
+
+
+
+    // EDIT
+
     public void delete(String key) {
         Node focusNode = search(key);
         if (focusNode == null) {
@@ -163,22 +179,6 @@ public class BinarySearchTree {
             }
         }
     }
-
-    private static int countChildren(Node focusNode) {
-        int count = 0;
-        if (nodeExists(focusNode, "left")) {
-            count++;
-        }
-
-        if (nodeExists(focusNode, "right")) {
-            count++;
-        }
-        return count;
-    }
-
-
-
-    // EDIT
 
     public void insert(String key) {
         if (root.key == null) {
@@ -254,4 +254,36 @@ public class BinarySearchTree {
             default -> throw new RuntimeException("wrong node name");
         }
     }
+
+    // DEV METHODS
+
+    public void printAll(boolean reversed) {
+        // reversed - from min to max
+        // normal - max to min
+
+        reversed = !reversed;
+
+        if (reversed) {
+            printAllRec(getMax(), reversed);
+        } else {
+            printAllRec(getMin(), reversed);
+        }
+    }
+
+    private static void printAllRec(Node focusNode, boolean reversed){
+        if (focusNode == null) {
+            return;
+        }
+
+        System.out.println(focusNode.key);
+
+        Node nextNode;
+        if (reversed) {
+            nextNode = getPredecessorRec(focusNode);
+        } else {
+            nextNode = getSuccessorRec(focusNode);
+        }
+        printAllRec(nextNode, reversed);
+    }
+
 }
