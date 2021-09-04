@@ -237,7 +237,7 @@ public class BinarySearchTreeTests {
         tree.insert("abcdefghijklmnop");
         tree.insert("abcdefghijklmnopqr");
 
-        tree.delete("abcdefghijklmnopqr");
+        tree.delete(tree.search("abcdefghijklmnopqr"));
 
         String expected = "abcdefghijklmnopqrst";
         String actual = tree.getSuccessor(tree.search("abcdefghijklmnopq")).getKey();
