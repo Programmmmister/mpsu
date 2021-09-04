@@ -11,7 +11,7 @@ public class BinarySearchTree {
         root = new Node(key);
     }
 
-    // GET IMFO
+    // GET INFO
 
     public Node search(String key) {
         return searchRec(key, root);
@@ -39,6 +39,25 @@ public class BinarySearchTree {
         }
         return null;
     }
+
+    public Node getMin() {
+        Node focusNode = root;
+        while (nodeExists(focusNode, "left")) {
+            focusNode = focusNode.leftNode;
+        }
+
+        return focusNode;
+    }
+
+    public Node getMax() {
+        Node focusNode = root;
+        while (nodeExists(focusNode, "right")) {
+            focusNode = focusNode.rightNode;
+        }
+
+        return focusNode;
+    }
+
 
     // EDIT
 
@@ -80,4 +99,40 @@ public class BinarySearchTree {
         }
     }
 
+    private static boolean nodeExists(Node focusNode, String whatNode) {
+        boolean doesExist;
+
+        switch (whatNode) {
+            case "right" -> {
+                try {
+                    // if rightNode exists, returns true
+                    doesExist = focusNode.rightNode != null;
+                } catch (Exception NullPointerException) {
+                    doesExist = false;
+                }
+                return doesExist;
+            }
+
+            case "left" -> {
+                try {
+                    // if leftNode exists, returns true
+                    doesExist = focusNode.leftNode != null;
+                } catch (Exception NullPointerException) {
+                    doesExist = false;
+                }
+                return doesExist;
+            }
+
+            case "parent" -> {
+                try {
+                    // if parentNode exists, returns true
+                    doesExist = focusNode.parentNode != null;
+                } catch (Exception NullPointerException) {
+                    doesExist = false;
+                }
+                return doesExist;
+            }
+            default -> throw new RuntimeException("wrong node name");
+        }
+    }
 }
