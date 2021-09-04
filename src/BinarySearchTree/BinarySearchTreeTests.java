@@ -219,4 +219,50 @@ public class BinarySearchTreeTests {
         Object actual = tree.search("trhr");
         assertEquals(expected, actual);
     }
+
+    @Test
+    public void delete() {
+
+        BinarySearchTree tree = new BinarySearchTree("abcdefgh");
+        tree.insert("abc");
+        tree.insert("abcd");
+        tree.insert("abcdefghijk");
+        tree.insert("abcdefghi");
+        tree.insert("ab");
+        tree.insert("abcdefghijklmnopqrst");
+        tree.insert("abcdefghijklmnopq");
+        tree.insert("abcde");
+        tree.insert("a");
+        tree.insert("abcdefghijklmnop");
+        tree.insert("abcdefghijklmnopqr");
+
+        tree.delete("abcdefghijklmnopqr");
+
+        String expected = "abcdefghijklmnopqrst";
+        String actual = tree.getSuccessor(tree.search("abcdefghijklmnopq")).getKey();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void delete_NotFound() {
+
+        BinarySearchTree tree = new BinarySearchTree("abcdefgh");
+        tree.insert("abc");
+        tree.insert("abcd");
+        tree.insert("abcdefghijk");
+        tree.insert("abcdefghi");
+        tree.insert("ab");
+        tree.insert("abcdefghijklmnopqrst");
+        tree.insert("abcdefghijklmnopq");
+        tree.insert("abcde");
+        tree.insert("a");
+        tree.insert("abcdefghijklmnop");
+        tree.insert("abcdefghijklmnopqr");
+
+        tree.delete("hrth");
+
+        String expected = "ab";
+        String actual = tree.getSuccessor(tree.search("a")).getKey();
+        assertEquals(expected, actual);
+    }
 }
