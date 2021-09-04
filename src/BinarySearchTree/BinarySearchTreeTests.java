@@ -155,4 +155,68 @@ public class BinarySearchTreeTests {
         Object actual = tree.getPredecessor(tree.search("a"));
         assertEquals(expected, actual);
     }
+
+    @Test
+    public void insertionTest_positive() {
+        BinarySearchTree tree = new BinarySearchTree("abcdefgh");
+        tree.insert("abc");
+        tree.insert("abcd");
+        tree.insert("abcdefghijk");
+        tree.insert("abcdefghi");
+        tree.insert("ab");
+        tree.insert("abcdefghijklmnopqrst");
+        tree.insert("abcdefghijklmnopq");
+        tree.insert("abcde");
+        tree.insert("a");
+        tree.insert("abcdefghijklmnop");
+        tree.insert("abcdefghijklmnopqr");
+
+        tree.delete("abcdefghijklmnopqrst");
+
+        String expected = null;
+        Object actual = tree.getSuccessor(tree.search("abcdefghijklmnopqr"));
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void search_positive() {
+
+        BinarySearchTree tree = new BinarySearchTree("abcdefgh");
+        tree.insert("abc");
+        tree.insert("abcd");
+        tree.insert("abcdefghijk");
+        tree.insert("abcdefghi");
+        tree.insert("ab");
+        tree.insert("abcdefghijklmnopqrst");
+        tree.insert("abcdefghijklmnopq");
+        tree.insert("abcde");
+        tree.insert("a");
+        tree.insert("abcdefghijklmnop");
+        tree.insert("abcdefghijklmnopqr");
+
+        String expected = "abcd";
+        String actual = tree.getSuccessor(tree.search("abc")).getKey();
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void search_notFound() {
+
+        BinarySearchTree tree = new BinarySearchTree("abcdefgh");
+        tree.insert("abc");
+        tree.insert("abcd");
+        tree.insert("abcdefghijk");
+        tree.insert("abcdefghi");
+        tree.insert("ab");
+        tree.insert("abcdefghijklmnopqrst");
+        tree.insert("abcdefghijklmnopq");
+        tree.insert("abcde");
+        tree.insert("a");
+        tree.insert("abcdefghijklmnop");
+        tree.insert("abcdefghijklmnopqr");
+
+        Object expected = null;
+        Object actual = tree.search("trhr");
+        assertEquals(expected, actual);
+    }
 }
