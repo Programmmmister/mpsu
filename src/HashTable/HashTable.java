@@ -23,6 +23,13 @@ public class HashTable {
         }
     }
 
+    // GET INFO
+
+    public DoubleLinkedList<TableObject> get(int key) {
+        int index = hash(key);
+        return data.get(index);
+    }
+
     // EDIT HASHTABLE
 
     public void input(String data) {
