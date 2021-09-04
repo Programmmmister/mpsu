@@ -68,6 +68,7 @@ public class BinarySearchTreeTests {
         assertEquals(expected, actual);
     }
 
+
     @Test
     public void getSuccessor_GeteralTest() {
         BinarySearchTree tree = new BinarySearchTree("abcdefgh");
