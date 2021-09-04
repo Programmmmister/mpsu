@@ -1,5 +1,6 @@
 package HashTable;
 import DoubleLinkedList.DoubleLinkedList;
+import DoubleLinkedList.Node;
 import DynamicArray.DynamicArray;
 
 public class HashTable {
@@ -20,5 +21,19 @@ public class HashTable {
         for (int i = 0; i < this.size; i++) {
             data.insert(i, new DoubleLinkedList<TableObject>());
         }
+    }
+
+    // EDIT HASHTABLE
+
+    public void input(String data) {
+        TableObject item = new TableObject(data);
+        int index = hash(item.key);
+        this.data.get(index).insertToStart(new Node<TableObject>(item));
+    }
+
+    // ENCRYPT
+
+    private int hash(int key) {
+        return key % size;
     }
 }
