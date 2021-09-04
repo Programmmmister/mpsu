@@ -265,4 +265,5 @@ public class BinarySearchTreeTests {
         String actual = tree.getSuccessor(tree.search("a")).getKey();
         assertEquals(expected, actual);
     }
+
 }
