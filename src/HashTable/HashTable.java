@@ -30,6 +30,24 @@ public class HashTable {
         return data.get(index);
     }
 
+    public void remove(int key) {
+        int index = hash(key);
+        for (int i = 0; i < data.get(index).getSize(); i++) {
+            int currentKey = data.get(index).get(i).getData().key;
+
+            if (data.get(index).getSize() <= 1) {
+                data.insert(index, new DoubleLinkedList<TableObject>());
+                return;
+            }
+
+            if (currentKey == key) {
+                data.get(index).popIndex(i);
+                return;
+            }
+        }
+    }
+
+
     // EDIT HASHTABLE
 
     public void input(String data) {
