@@ -39,4 +39,8 @@ public class Graph {
         }
     }
 
+    public int get_size() {
+        return size;
+    }
+
 }
