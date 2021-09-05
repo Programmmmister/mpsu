@@ -10,4 +10,9 @@ public class Graph {
         graph = new DoubleLinkedList<DoubleLinkedList<Integer>>();
     }
 
+    public void add(int initial, int desired) {
+        graph.get(initial).getData().appendValue(initial);
+        graph.get(desired).getData().appendValue(initial);
+    }
+
 }
