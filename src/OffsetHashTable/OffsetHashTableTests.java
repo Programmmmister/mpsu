@@ -44,4 +44,18 @@ public class OffsetHashTableTests {
         String actual = table.get_object("c").data;
         assertEquals(expected, actual);
     }
+
+    @Test
+    public void remove() {
+        OffsetHashTable table = new OffsetHashTable();
+        table.input("a");
+        table.input("b");
+        table.input("c");
+
+        table.remove("b");
+
+        Object expected = null;
+        Object actual = table.get_object("b");
+        assertEquals(expected, actual);
+    }
 }
