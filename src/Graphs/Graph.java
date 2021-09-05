@@ -15,4 +15,8 @@ public class Graph {
         graph.get(desired).getData().appendValue(initial);
     }
 
+    public DoubleLinkedList<Integer> get(int index) {
+        return graph.get(index).getData();
+    }
+
 }
