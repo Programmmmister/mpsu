@@ -32,4 +32,16 @@ public class OffsetHashTableTests {
             table.input(Integer.toString(rand.nextInt(255)));
         }
     }
+
+    @Test
+    public void get() {
+        OffsetHashTable table = new OffsetHashTable();
+        table.input("a");
+        table.input("b");
+        table.input("c");
+
+        String expected = "c";
+        String actual = table.get_object("c").data;
+        assertEquals(expected, actual);
+    }
 }
