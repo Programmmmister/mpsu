@@ -52,4 +52,14 @@ public class GraphsTests {
         Assertions.assertEquals(expected, actual);
     }
 
+    @Test
+    public void get() {
+        Graph graph = new Graph(5);
+        graph.add(3, 2);
+
+        int expected = 2;
+        int actual = graph.get(3).get(0).getData();
+        Assertions.assertEquals(expected, actual);
+    }
+
 }
