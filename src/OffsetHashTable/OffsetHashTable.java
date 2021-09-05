@@ -39,6 +39,22 @@ public class OffsetHashTable {
         }
     }
 
+    public TableObject get_object(String data) {
+        int key = get_ascii(data) % TABLE_SIZE;
+
+        if (table.get(key).data.equals(data)) {
+            return table.get(key);
+        } else {
+            for (int i = 0; i < table.getSize() - 1; i++) {
+
+                if (table.get(i) != null && table.get(i).data.equals(data)) {
+                    return table.get(i);
+                }
+            }
+            return null;
+        }
+    }
+
     public int hash(int key) {
         return key % TABLE_SIZE;
     }
