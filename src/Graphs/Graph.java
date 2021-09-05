@@ -19,4 +19,24 @@ public class Graph {
         return graph.get(index).getData();
     }
 
+    public void delete(int initial, int desired)
+    {
+        for (int i = 0; i < graph.get(desired).getData().getSize(); i++)
+        {
+            if (graph.get(desired).getData().get(i).getData().equals(initial))
+            {
+                graph.get(desired).getData().popIndex(i);
+                break;
+            }
+        }
+        for (int i = 0; i < graph.get(initial).getData().getSize(); i++)
+        {
+            if (graph.get(initial).getData().get(i).getData() == desired)
+            {
+                graph.get(initial).getData().popIndex(i);
+                break;
+            }
+        }
+    }
+
 }

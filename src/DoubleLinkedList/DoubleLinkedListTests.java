@@ -46,7 +46,7 @@ public class DoubleLinkedListTests {
     public void getSize_empty() {
         DoubleLinkedList<Integer> list = new DoubleLinkedList<Integer>();
 
-        int expected = 1;
+        int expected = 2;
         int actual = list.getSize();
         assertEquals(expected, actual);
     }
