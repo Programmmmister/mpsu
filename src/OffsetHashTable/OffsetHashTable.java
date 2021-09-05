@@ -5,6 +5,12 @@ public class OffsetHashTable {
     int TABLE_SIZE;
     DynamicArray<TableObject> table;
 
+    public OffsetHashTable() {
+        int size = 5;
+        TABLE_SIZE = size;
+        table = new DynamicArray<TableObject>(size);
+    }
+
     public OffsetHashTable(int size) {
         TABLE_SIZE = size;
         table = new DynamicArray<TableObject>(size);
