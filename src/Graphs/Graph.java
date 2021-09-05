@@ -45,6 +45,8 @@ public class Graph {
                 break;
             }
         }
+
+        size--;
     }
 
     public int get_size() {
