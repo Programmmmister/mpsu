@@ -58,4 +58,5 @@ public class OffsetHashTableTests {
         Object actual = table.get_object("b");
         assertEquals(expected, actual);
     }
+
 }
