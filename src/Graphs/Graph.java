@@ -4,15 +4,23 @@ import DoubleLinkedList.DoubleLinkedList;
 public class Graph {
     DoubleLinkedList<DoubleLinkedList<Integer>> graph;
     int nodes;
+    int size = 0;
 
     public Graph(int node_amount) {
         nodes = node_amount;
         graph = new DoubleLinkedList<DoubleLinkedList<Integer>>();
+
+        for (int i = 0; i < nodes; i++) {
+            // initialization
+
+            graph.appendValue(new DoubleLinkedList<Integer>());
+        }
     }
 
     public void add(int initial, int desired) {
-        graph.get(initial).getData().appendValue(initial);
+        graph.get(initial).getData().appendValue(desired);
         graph.get(desired).getData().appendValue(initial);
+        size++;
     }
 
     public DoubleLinkedList<Integer> get(int index) {
